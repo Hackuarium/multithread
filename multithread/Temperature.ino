@@ -8,6 +8,9 @@ NIL_THREAD(ThreadTemperature, arg) {
   writeConfig(TEMPERATURE_ADDRESS, 1 << 5); // use use oneshot mode to consume 3ua
   while (true) {
     setParameter(PARAM_TEMPERATURE, readTemperature(TEMPERATURE_ADDRESS));
+
+
+    
     nilThdSleepMilliseconds(1000);
   }
 }

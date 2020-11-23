@@ -1,10 +1,14 @@
 NIL_WORKING_AREA(waThreadMonitoring, 0);
 NIL_THREAD(ThreadMonitoring, arg) {
+  pinMode(BLINK_LED, OUTPUT);
   nilThdSleepMilliseconds(1000);
   wdt_enable(WDTO_8S);  //activate the watchdog
   while (TRUE) {
     wdt_reset();//resed avoid the automatic reboot
-    nilThdSleepMilliseconds(500);
+    nilThdSleepMilliseconds(200);
+    digitalWrite(BLINK_LED, HIGH);
+    nilThdSleepMilliseconds(200);
+    digitalWrite(BLINK_LED, LOW);
   }
 }
 
